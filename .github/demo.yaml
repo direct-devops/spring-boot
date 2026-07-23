@@ -1,0 +1,22 @@
+name: manual jobs
+
+on:
+  workflow_dispatch:
+    inputs:
+      enviroment:
+        descrpition: 'need pass env name'
+        required: true
+        type: string
+        default: "dev"
+
+jobs:
+  demo-inpts:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout repo branch
+        uses: actions/checkout@v7
+
+      - name: print values inputs
+        run: |
+          echo "env: ${{ githb.events.inputs.enviroment }}"
+  
