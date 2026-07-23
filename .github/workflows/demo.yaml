@@ -25,6 +25,13 @@ on:
           - prod
           - int
         default: dev 
+      
+      value:
+        description: demo
+        required: true
+        type: number
+        default: 1000
+      
 
 jobs:
   demo-inpts:
@@ -45,3 +52,4 @@ jobs:
       - name: demp choice inputs
         run: |
           echo "my data env is ${{ github.event.inputs.data_env }}"
+          echo "${{ github.event.inputs.value }}"
