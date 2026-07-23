@@ -15,6 +15,17 @@ on:
         type: boolean
         default: true
 
+      data_env:
+        description: allow to run steps
+        required: true
+        type: choice
+        options:
+          - dev
+          - stg
+          - prod
+          - int
+        default: dev 
+
 jobs:
   demo-inpts:
     runs-on: ubuntu-latest
@@ -30,3 +41,7 @@ jobs:
         if: ${{ github.event.inputs.allow-run == true }}
         run:
           echo "Build started"
+
+      - name: demp choice inputs
+        run: |
+          echo "my data env is ${{ github.event.inputs.data_env }}"
