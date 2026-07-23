@@ -27,6 +27,6 @@ jobs:
           echo "env: ${{ github.event.inputs.enviroment }}"
 
       - name: allow-run true
-        if: github.event.inputs.allow-run
+        if: ${{ github.event.inputs.allow-run == true }}
         run:
           echo "Build started"
