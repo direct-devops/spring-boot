@@ -9,6 +9,12 @@ on:
         type: string
         default: "dev"
 
+      allow-run:
+        description: allow to run steps
+        required: true
+        type: boolean
+        default: true
+
 jobs:
   demo-inpts:
     runs-on: ubuntu-latest
@@ -19,4 +25,8 @@ jobs:
       - name: print values inputs
         run: |
           echo "env: ${{ github.event.inputs.enviroment }}"
-  
+
+      - name: allow-run true
+        if: ${{ github.event.inputs.allow-run }}
+        run:
+          echo "Build started"
